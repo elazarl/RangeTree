@@ -1,7 +1,11 @@
 package com.github.elazarl.rangetree;
 
 import com.google.common.collect.Lists;
+import com.javadocmd.simplelatlng.LatLng;
+import com.javadocmd.simplelatlng.LatLngTool;
+import com.javadocmd.simplelatlng.util.LengthUnit;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -44,10 +48,21 @@ public class LatLngRangeTree {
         }
     }
 
-    public List<Point> coordNear(double lat, double lng, double meters) {
+    public List<Point> coordInRect(double lat, double lng, double meters) {
         GeoLocation[] locs = GeoLocation.fromDegrees(lat, lng).
                 boundingEarthCoordinatesInMeters(meters);
         return coordInRange(locs[0].getLatitudeInDegrees(), locs[1].getLatitudeInDegrees(),
                 locs[0].getLongitudeInDegrees(), locs[1].getLongitudeInDegrees());
+    }
+
+    public List<Point> coordInRadius(double lat, double lng, double meters) {
+        List<Point> points = coordInRect(lat, lng, meters);
+        LatLng center = new LatLng(lat, lng), point = new LatLng(0, 0);
+        for (Iterator<Point> it = points.iterator(); it.hasNext();) {
+            Point p = it.next();
+            point.setLatitudeLongitude(p.x, p.y);
+            if (LatLngTool.distance(center, point, LengthUnit.METER)>meters) it.remove();
+        }
+        return points;
     }
 }
