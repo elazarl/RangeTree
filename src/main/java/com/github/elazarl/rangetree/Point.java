@@ -14,11 +14,11 @@ public class Point {
         this.x = x;
         this.y = y;
     }
-    static Point make(double x, double y) {
+    static public Point make(double x, double y) {
         return new Point(x, y);
     }
 
-    static Point[] makeArray(double... points) {
+    static public Point[] makeArray(double... points) {
         if (points.length%2!=0) throw new IllegalArgumentException("#numbers must be even");
         Point[] result = new Point[points.length/2];
         for (int i=0; i<points.length; i+=2) result[i/2] = make(points[i], points[i+1]);
