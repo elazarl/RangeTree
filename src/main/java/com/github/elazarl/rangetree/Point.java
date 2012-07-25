@@ -8,8 +8,8 @@ import java.text.DecimalFormat;
  * Simple data class for a point in the plane
  */
 public class Point {
-    double x;
-    double y;
+    public double x;
+    public double y;
     public Point(double x, double y) {
         this.x = x;
         this.y = y;
