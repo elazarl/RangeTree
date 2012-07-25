@@ -59,12 +59,12 @@ public class LatLngRangeTreeTest {
         // not all points are in the circle
         assertThat(Sets.newHashSet(tree.coordInRadius(51.065403,-120.163221, 700)),
                 equalTo(Sets.newHashSet(Point.makeArray(
-                    51.065403,-120.163221,
-                    51.065403, -120.172963
+                        51.065403, -120.163221,
+                        51.065403, -120.172963
                 )
-        )));
+                )));
         // but all are in the square
-        assertThat(Sets.newHashSet(tree.coordInRect(51.065403,-120.163221, 700)),
+        assertThat(Sets.newHashSet(tree.coordInRect(51.065403, -120.163221, 700)),
                 equalTo(Sets.newHashSet(Point.makeArray(
                         51.065403,-120.163221,
                         51.059334, -120.172963,
