@@ -9,3 +9,5 @@ by the X coordinates, every node has an array of all points below it ordered
 by the Y coordinate. This array pictured as a long rectangle, divided into
 cells. Each cell contains a point in the plane (the topmost part), and two
 indices (the two bottom squares).
+
+An example web application using range tree is available [here](https://github.com/elazarl/RangeTree/tree/master/examples/rangetree-starbucks).
